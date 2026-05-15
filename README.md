@@ -80,3 +80,14 @@ Websocket server dijalankan dengan perintah berikut:
 \`\`\`
 npm start
 \`\`\`
+
+
+### Experiment 3.2: Be Creative!
+
+![img_10.png](img_10.png)
+
+![img_11.png](img_11.png)
+
+Pada eksperimen ini, saya menambahkan kreativitas pada tampilan webclient YewChat. Saya mengubah halaman login agar memiliki tampilan yang lebih menarik dengan background gradient, judul aplikasi, emoji, subtitle, dan tombol yang lebih ekspresif. Selain itu, saya juga mengubah tampilan halaman chat dengan menambahkan header baru bertuliskan `Abhivadya Async Chat`.
+
+Saya juga mengganti status user dari teks sederhana menjadi `Online • ready to chat`, serta mengubah placeholder input pesan menjadi `Type something creative...`. Perubahan ini tidak mengubah mekanisme utama websocket, tetapi membuat aplikasi terasa lebih personal dan lebih nyaman digunakan. Melalui eksperimen ini, saya memahami bahwa kreativitas dalam pengembangan perangkat lunak tidak selalu harus berupa fitur besar, tetapi juga dapat berupa peningkatan pengalaman pengguna melalui tampilan, teks, dan interaksi yang lebih baik.

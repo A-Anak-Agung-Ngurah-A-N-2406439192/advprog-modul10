@@ -154,7 +154,7 @@ impl Component for Chat {
                                             <div>{u.name.clone()}</div>
                                         </div>
                                         <div class="text-xs text-gray-400">
-                                            {"Hi there!"}
+                                            {"Online • ready to chat"}
                                         </div>
                                     </div>
                                 </div>
@@ -163,7 +163,10 @@ impl Component for Chat {
                     }
                 </div>
                 <div class="grow h-screen flex flex-col">
-                    <div class="w-full h-14 border-b-2 border-gray-300"><div class="text-xl p-3">{"💬 Chat!"}</div></div>
+                    <div class="w-full h-20 border-b-2 border-gray-300 bg-gradient-to-r from-violet-600 to-blue-500 text-white">
+                        <div class="text-xl font-bold px-4 pt-3">{"🚀 Abhivadya Async Chat"}</div>
+                        <div class="text-xs px-4 opacity-90">{"Powered by Rust, Yew, WebSocket, and creativity"}</div>
+                    </div>
                     <div class="w-full grow overflow-auto border-b-2 border-gray-300">
                         {
                             self.messages.iter().map(|m| {
