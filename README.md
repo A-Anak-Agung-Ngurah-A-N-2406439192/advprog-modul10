@@ -28,7 +28,7 @@ Pada eksperimen ini, saya mencoba menghapus `drop(spawner);`. Hasilnya, program 
 
 ### Experiment 2.1: Original code, and how it run
 
-![img_3.png](img_3.png)
+![img_6.png](img_6.png)
 
 Pada eksperimen ini, saya menjalankan aplikasi broadcast chat asynchronous menggunakan websocket. Program terdiri dari satu server dan tiga client. Server dijalankan dengan perintah berikut:
 
@@ -49,7 +49,7 @@ Aplikasi ini menunjukkan penggunaan asynchronous programming pada kasus yang leb
 
 ### Experiment 2.2: Modifying the websocket port
 
-![img_4.png](img_4.png)
+![img_7.png](img_7.png)
 
 Pada eksperimen ini, saya mengubah port websocket dari `2000` menjadi `8080`. Perubahan dilakukan pada sisi server dan sisi client karena websocket membutuhkan alamat koneksi yang sama antara server dan client. Pada sisi server, saya mengubah bagian `TcpListener::bind("127.0.0.1:2000")` menjadi `TcpListener::bind("127.0.0.1:8080")`. Perubahan ini membuat server mendengarkan koneksi websocket pada port `8080`.
 
