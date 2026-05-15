@@ -46,3 +46,11 @@ Saya menjalankan satu server dan tiga client secara bersamaan. Setelah semua cli
 
 Aplikasi ini menunjukkan penggunaan asynchronous programming pada kasus yang lebih nyata. Server tidak hanya menangani satu client, tetapi dapat menangani beberapa client secara bersamaan. Penggunaan websocket memungkinkan komunikasi dua arah antara client dan server secara terus-menerus. Selain itu, penggunaan asynchronous runtime membantu server tetap responsif ketika menerima dan mengirim pesan dari beberapa koneksi.
 
+
+### Experiment 2.2: Modifying the websocket port
+
+![img_4.png](img_4.png)
+
+Pada eksperimen ini, saya mengubah port websocket dari `2000` menjadi `8080`. Perubahan dilakukan pada sisi server dan sisi client karena websocket membutuhkan alamat koneksi yang sama antara server dan client. Pada sisi server, saya mengubah bagian `TcpListener::bind("127.0.0.1:2000")` menjadi `TcpListener::bind("127.0.0.1:8080")`. Perubahan ini membuat server mendengarkan koneksi websocket pada port `8080`.
+
+Pada sisi client, saya mengubah URI websocket dari `ws://127.0.0.1:2000` menjadi `ws://127.0.0.1:8080`. Protocol websocket didefinisikan pada bagian URI client dengan prefix `ws://`. Setelah perubahan dilakukan, aplikasi tetap dapat berjalan dengan baik. Server dapat menerima koneksi dari beberapa client, dan pesan yang dikirim oleh salah satu client tetap dapat di-broadcast ke client lainnya.
