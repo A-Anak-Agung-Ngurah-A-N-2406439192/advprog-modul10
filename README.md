@@ -1,10 +1,12 @@
-## Experiment 1.2: Understanding how it works
+## Tutorial 1 - Timer
+
+### Experiment 1.2: Understanding how it works
 
 ![img.png](img.png)
 
 Pada eksperimen ini, saya menambahkan perintah `println!("Abhivadya's Komputer: hey hey");` setelah pemanggilan `spawner.spawn(...)`. Hasilnya, teks `hey hey` muncul lebih dulu dibandingkan `howdy!`. Hal ini terjadi karena `spawner.spawn(...)` hanya memasukkan task ke dalam queue, tetapi task tersebut belum langsung dijalankan. Task async baru mulai dijalankan ketika `executor.run()` dipanggil. Setelah executor berjalan, future di-poll dan mencetak `howdy!`, lalu menunggu `TimerFuture` selama dua detik. Setelah timer selesai, waker memberi tahu executor untuk melanjutkan task sehingga teks `done!` dicetak.
 
-## Experiment 1.3: Multiple Spawn and removing drop
+### Experiment 1.3: Multiple Spawn and removing drop
 
 ### Multiple Spawn
 
@@ -21,3 +23,26 @@ Pada eksperimen ini, saya mencoba menghapus `drop(spawner);`. Hasilnya, program 
 ### Explanation
 
 `Spawner` berfungsi untuk memasukkan task async ke dalam queue. `Executor` berfungsi untuk mengambil task dari queue dan menjalankannya sampai selesai dengan cara melakukan polling terhadap future. `drop(spawner);` digunakan untuk memberi tahu executor bahwa tidak ada lagi task baru yang akan dikirim. Hubungan ketiganya adalah spawner mengirim task, executor menjalankan task, dan drop menghentikan kemungkinan pengiriman task baru agar executor bisa berhenti ketika semua task selesai.
+
+## Tutorial 2 - Broadcast Chat
+
+### Experiment 2.1: Original code, and how it run
+
+![img_3.png](img_3.png)
+
+Pada eksperimen ini, saya menjalankan aplikasi broadcast chat asynchronous menggunakan websocket. Program terdiri dari satu server dan tiga client. Server dijalankan dengan perintah berikut:
+
+\`\`\`bash
+cargo run --bin server
+\`\`\`
+
+Client dijalankan dengan perintah berikut:
+
+\`\`\`bash
+cargo run --bin client
+\`\`\`
+
+Saya menjalankan satu server dan tiga client secara bersamaan. Setelah semua client terhubung ke server, saya mencoba mengetik pesan dari salah satu client. Pesan tersebut diterima oleh server, lalu server mengirimkan kembali pesan tersebut ke client-client lain yang sedang terhubung. Dengan begitu, pesan yang dikirim oleh satu client dapat terlihat pada client lainnya.
+
+Aplikasi ini menunjukkan penggunaan asynchronous programming pada kasus yang lebih nyata. Server tidak hanya menangani satu client, tetapi dapat menangani beberapa client secara bersamaan. Penggunaan websocket memungkinkan komunikasi dua arah antara client dan server secara terus-menerus. Selain itu, penggunaan asynchronous runtime membantu server tetap responsif ketika menerima dan mengirim pesan dari beberapa koneksi.
+
