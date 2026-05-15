@@ -65,3 +65,18 @@ Pada eksperimen ini, saya melakukan perubahan kecil pada aplikasi broadcast chat
 Sebelumnya, pesan yang dikirim ke broadcast channel hanya berupa isi pesan atau format sederhana. Setelah dimodifikasi, server membuat pesan baru dengan format `Abhivadya's Computer - From {addr}: {text}`. Nilai `{addr}` berisi socket address dari client pengirim, sedangkan `{text}` berisi pesan yang diketik oleh client. Dengan perubahan ini, setiap client dapat mengetahui dari alamat IP dan port mana sebuah pesan berasal.
 
 Perubahan ini membantu saya memahami bagaimana pesan dikirim dari client ke server, lalu diteruskan kembali oleh server ke client-client lain. Server berperan sebagai pusat broadcast yang menerima pesan dari satu koneksi websocket dan membagikannya ke koneksi websocket lain yang sedang aktif.
+
+
+### Experiment 3.1: Original code
+
+![img_8.png](img_8.png)
+
+![img_9.png](img_9.png)
+
+Pada eksperimen ini, saya menjalankan aplikasi WebChat menggunakan Rust dan Yew sebagai webclient. Aplikasi ini menggunakan websocket agar client dapat mengirim dan menerima pesan secara asynchronous melalui browser. Untuk menjalankan aplikasi ini, saya menggunakan dua project, yaitu `YewChat` sebagai client dan `SimpleWebsocketServer` sebagai websocket server.
+
+Websocket server dijalankan dengan perintah berikut:
+
+\`\`\`
+npm start
+\`\`\`

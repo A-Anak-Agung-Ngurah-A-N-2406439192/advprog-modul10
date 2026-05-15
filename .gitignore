@@ -1,11 +1,15 @@
+# Node / Webpack / WASM build output
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+pkg/
+**/pkg/
+
 # Rust build output
 target/
 **/target/
 
-# JetBrains IDE
+# IDE
 .idea/
 *.iml
-
-# OS files
-.DS_Store
-Thumbs.db
