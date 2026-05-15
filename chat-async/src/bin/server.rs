@@ -23,9 +23,9 @@ async fn handle_connection(
                     Some(Ok(msg)) => {
                         if let Some(text) = msg.as_text() {
                             println!("From client {addr}: {text}");
-                            bcast_tx.send(format!("{addr}: {text}"))?;
-                        } else if msg.is_close() {
-                            break;
+
+                            let formatted_message = format!("Abhivadya's Computer - From {addr}: {text}");
+                            bcast_tx.send(formatted_message)?;
                         }
                     }
                     Some(Err(err)) => {

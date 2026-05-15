@@ -54,3 +54,14 @@ Aplikasi ini menunjukkan penggunaan asynchronous programming pada kasus yang leb
 Pada eksperimen ini, saya mengubah port websocket dari `2000` menjadi `8080`. Perubahan dilakukan pada sisi server dan sisi client karena websocket membutuhkan alamat koneksi yang sama antara server dan client. Pada sisi server, saya mengubah bagian `TcpListener::bind("127.0.0.1:2000")` menjadi `TcpListener::bind("127.0.0.1:8080")`. Perubahan ini membuat server mendengarkan koneksi websocket pada port `8080`.
 
 Pada sisi client, saya mengubah URI websocket dari `ws://127.0.0.1:2000` menjadi `ws://127.0.0.1:8080`. Protocol websocket didefinisikan pada bagian URI client dengan prefix `ws://`. Setelah perubahan dilakukan, aplikasi tetap dapat berjalan dengan baik. Server dapat menerima koneksi dari beberapa client, dan pesan yang dikirim oleh salah satu client tetap dapat di-broadcast ke client lainnya.
+
+
+### Experiment 2.3: Small changes, add IP and Port
+
+![img_5.png](img_5.png)
+
+Pada eksperimen ini, saya melakukan perubahan kecil pada aplikasi broadcast chat dengan menambahkan informasi pengirim pada pesan yang diterima oleh client. Informasi yang ditambahkan adalah alamat IP dan port dari client pengirim. Perubahan dilakukan pada sisi server, tepatnya ketika server menerima pesan dari websocket client.
+
+Sebelumnya, pesan yang dikirim ke broadcast channel hanya berupa isi pesan atau format sederhana. Setelah dimodifikasi, server membuat pesan baru dengan format `Abhivadya's Computer - From {addr}: {text}`. Nilai `{addr}` berisi socket address dari client pengirim, sedangkan `{text}` berisi pesan yang diketik oleh client. Dengan perubahan ini, setiap client dapat mengetahui dari alamat IP dan port mana sebuah pesan berasal.
+
+Perubahan ini membantu saya memahami bagaimana pesan dikirim dari client ke server, lalu diteruskan kembali oleh server ke client-client lain. Server berperan sebagai pusat broadcast yang menerima pesan dari satu koneksi websocket dan membagikannya ke koneksi websocket lain yang sedang aktif.
