@@ -78,10 +78,20 @@ fn main() {
 
     spawner.spawn(async {
         println!("Abhivadya's Komputer: howdy!");
-
         TimerFuture::new(Duration::new(2, 0)).await;
-
         println!("Abhivadya's Komputer: done!");
+    });
+
+    spawner.spawn(async {
+        println!("Abhivadya's Komputer: howdy2!");
+        TimerFuture::new(Duration::new(2, 0)).await;
+        println!("Abhivadya's Komputer: done2!");
+    });
+
+    spawner.spawn(async {
+        println!("Abhivadya's Komputer: howdy3!");
+        TimerFuture::new(Duration::new(2, 0)).await;
+        println!("Abhivadya's Komputer: done3!");
     });
 
     println!("Abhivadya's Komputer: hey hey");
